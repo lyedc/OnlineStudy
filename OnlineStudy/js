@@ -1,0 +1,64 @@
+
+关于js的
+
+ 3 第三方验证 点击刷新的功能
+     $('.captcha').click(function () {
+        // 注册邮箱验证码刷新功能
+        var $captcha = $(this);
+        $.get("/captcha/refresh/?" + Math.random(), function (result) {
+            $('#id_captcha_0').val(result.key);  // 更换新的key值
+            $captcha.attr("src", result.image_url);  // 跟新新的图片地址
+        });
+        return false;  // 阻止默认的事件
+    });
+
+
+    //用户名验证：(数字字母或下划线6到20位)
+    var reUser = /^\w{6,20}$/;
+    验证的正则是:使用 reUser.test(user)  参数是输入的用户名    前面的是正则的表达式
+    //邮箱验证：
+    var reMail = /^[a-z0-9][\w\.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$/i;
+
+    //密码验证：
+    var rePass = /^[\w!@#$%^&*]{6,20}$/;
+
+    //手机号码验证：
+    var rePhone = /^1[3458]\d{9}$/;
+
+
+使用js来阻止表单的提交
+    方法1
+        form name="loginForm" action="login.aspx" method="post">
+     <button type="submit" value="Submit" id="submit">Submit</button>
+    </form>
+
+    <script>
+     var submitBtn = document.getElementById("submit");
+
+     submitBtn.onclick = function (event) {
+      alert("preventDefault!");
+      return false;
+     };
+    </script>
+
+    方法2
+
+    <form name="loginForm" action="login.aspx" method="post">
+     <button type="submit" value="Submit" id="submit">Submit</button>
+    </form>
+
+    <script>
+     var submitBtn = document.getElementById("submit");
+
+     submitBtn.onclick = function (event) {
+      alert("preventDefault!");
+      var event = event || window.event;
+      event.preventDefault(); // 兼容标准浏览器
+      window.event.returnValue = false; // 兼容IE6~8
+     };
+</script>
+
+
+    在表单中使用  <form action="demo_form.asp" method="get" autocomplete="on">  autocomplete 为
+    autocomplete 属性规定输入字段是否应该启用自动完成功能。
+    自动完成允许浏览器预测对字段的输入。当用户在字段开始键入时，浏览器基于之前键入过的值，应该显示出在字段中填写的选项。

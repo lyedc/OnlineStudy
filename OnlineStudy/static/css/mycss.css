@@ -1,0 +1,11 @@
+.focus{
+    border-color: #be3948;
+}
+.email_err, .password_err {
+    height: 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+    color: red;
+
+}
+
