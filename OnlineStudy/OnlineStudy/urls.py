@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^users/', include('users.urls', namespace='users')),
     url(r'^org/', include('org.urls', namespace='org')),
     url(r'^course/', include('course.urls', namespace='course')),
+    url(r'^operation/', include('operation.urls', namespace='operation')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),  # 处理上传文件的访问路径
 ]

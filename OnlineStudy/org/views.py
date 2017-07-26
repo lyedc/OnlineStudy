@@ -29,7 +29,7 @@ class OrgListView(View):
 
     def get_page(self, course_org_list, current_page):
         # 分页的开始
-        paginator = Paginator(course_org_list, 1)
+        paginator = Paginator(course_org_list, 3)
         try:
             current_page_course = paginator.page(int(current_page))
         except (InvalidPage, PageNotAnInteger, EmptyPage):
@@ -56,6 +56,7 @@ class OrgStudyView(View):
 
 class OrgDetailView(View):
     """机构详情页面"""
+
     def get(self, request, nid):
         course_org_detail = CourseOrg.objects.filter(id=int(nid)).first()
         return render(request, 'org/org-detail-homepage.html', locals())

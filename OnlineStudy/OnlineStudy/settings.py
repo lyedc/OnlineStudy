@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'captcha',
     'org',
     'course',
+    'operation',
 ]
 
 MIDDLEWARE_CLASSES = [
